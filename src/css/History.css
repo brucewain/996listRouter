@@ -1,0 +1,131 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+}
+
+p, a {
+  font-family: "Roboto", sans-serif;
+}
+
+img {
+   place-self: center;
+
+}
+
+@media screen and (min-width: 350px) {
+
+    .History-parent {
+        display: grid;
+        place-items: center;
+        padding: 20% 5% 5% 5%  ;
+      
+  }
+
+ 
+
+    .History-child{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5em;
+  }
+
+    .History-content{
+      display: flex;
+    flex-direction: column;
+    row-gap: .5em;
+    
+  }
+
+  span{
+    font-size: 1.5em;
+  }
+
+  p{
+    letter-spacing: .06em;
+    line-height: 1.4em;
+   
+  }
+
+  img{
+    width: 110%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+
+  h3, h5{
+    margin: 0%;
+  }
+
+  .History-banner{
+    background-image: url('https://assets-v2.porsche.com/stories/-/jssmedia/Project/Content-Hub-Tenants/Content-Hub/content-hub-main/hero/25-years-of-996-7-facts.jpg?w=1920&h=auto&rev=c8d3314630af40ababd44283c35bc423');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: right 50% top 50%;
+    width: 100vw;
+    height: 700px;
+display: grid;
+place-items: center;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .History-copy{
+    grid-row-start: 3;
+    color: white;
+    font-size: 2.4rem;
+  }
+
+    .History-parent {
+        display: flex;
+        
+        flex-direction: column;
+        padding:  0 15% 5% 15%;
+      
+  }
+
+  .History-child{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5em;
+    padding-top: 5%;
+  }
+
+  .History-content{
+      display: flex;
+    flex-direction: column;
+    row-gap: 0em;
+    
+  }
+
+  span{
+    font-size: 2.2em;
+  }
+
+  h1{
+    font-size: 3.6em;
+  }
+
+  p{
+    font-size: 1.2em;
+    letter-spacing: .06em;
+    line-height: 1.4em;
+    
+    
+  }
+
+  img{
+    width: 120%;
+  }
+
+
+
+
+ 
+}
+    

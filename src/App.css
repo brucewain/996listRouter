@@ -1,0 +1,63 @@
+/* font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;   */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+p, a {
+  font-family: "Roboto", sans-serif;
+}
+
+.h3-hover:hover{
+  text-decoration: underline;
+  color: #E6B85C;
+}
+
+ul{
+  list-style-type: none;
+}
+
+
+
+.App {
+  height: 100%;
+width: 100vw;
+  margin: 0;
+  padding: 0%;
+}
+
+.App::-webkit-scrollbar {
+  display: none;
+}
+
+.test2 {
+  display: flex;
+  align-items: flex-end;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.spanTest{
+  background-image: url('src/assets/logo/plistlogo.png');
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+@media only screen and (min-width: 350px) {
+
+}
+@media only screen and (min-width: 1440px) {
+  
+}

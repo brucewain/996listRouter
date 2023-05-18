@@ -1,0 +1,73 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+p, a {
+  font-family: "Roboto", sans-serif;
+}
+
+@media screen and (min-width: 350px) {
+    .About-parent {
+      display: flex;
+      flex-direction: column-reverse;
+      place-items: center;
+      margin: 0% 0 5% 0;
+  
+      border-style: solid;
+      border-width: 1px;
+      border-color: grey;
+  }
+
+  .about-photo{
+    height: 360px;
+    width: 100%;
+    object-fit: cover;
+   
+  }
+
+  .About-us{
+    padding: 5% 10%;
+  }
+
+  span{
+    text-align: center;
+    letter-spacing: 2px;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .About-us > p{
+    letter-spacing: 2px;
+    line-height: 1.4em;
+  }
+}
+
+
+@media screen and (min-width: 1440px) {
+    .About-parent {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      place-items: center;
+      margin: 5%;
+      border-style: solid;
+      border-width: 1px;
+      border-color: grey;
+  }
+  
+  .about-photo{
+    height: 100%;
+    object-fit: auto;
+    object-position: 100% 100%;
+   
+  }
+
+  .About-us > p{
+    
+    line-height: 1.4em;
+  }
+}

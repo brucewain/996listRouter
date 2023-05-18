@@ -1,0 +1,36 @@
+
+
+@media only screen and (min-width: 350px) {
+
+}
+@media only screen and (min-width: 1440px) {
+  .gallery {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .App::-webkit-scrollbar {
+    display: none;
+  }
+
+  .test {
+    background-image: url("src/assets/Morning Car Club_210.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    padding: 0;
+  }
+
+  .test2 {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .gallery-array-title {
+    padding: 1%;
+  }
+
+  .gallery-array-title > * {
+    color: white;
+  }
+}

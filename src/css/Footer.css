@@ -1,0 +1,199 @@
+@media only screen and (min-width: 350px) {
+    .footer{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1 1fr;
+        row-gap: 30px;
+        padding: 4% 2% ;
+        height: auto;
+        text-align: center;
+    }
+    
+    .footer-checkbox-form{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        /* grid-template-rows: repeat(5,1fr); */
+        /* grid-template-rows: repeat(3,1fr); */
+        
+        /* gap:2% */
+    }
+    
+    .footer-checkbox-items{
+        /* display: flex; */
+        /* flex-direction: row; */
+        /* column-gap: 5%; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* flex-grow: 1; */
+        /* flex-shrink: 1; */
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        text-align: left;
+        /* row-gap: 10%; */
+        column-gap: 5%;
+        /* height: 10%; */
+    
+    }
+    
+    
+    
+    
+    .footer-checkbox-items >p{
+        margin: 1% 0;
+    }
+    
+    
+    
+    .footer-parent{
+        display: flex;
+        flex-direction: column;
+        gap: 3%
+    }
+
+    .footer-email-form{
+        grid-row: 2;
+        grid-column: span 2;
+    }
+    
+     h4{
+        margin: 2% 0;
+    }
+    
+    .footer-email-form > h4{
+        margin:  0%;
+    }
+    
+    .footer-form-submit{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column: 1 / span 3;
+        grid-row-start: 3;
+        height: 60%;
+    }
+    
+    .footer-form-submit > .email    {
+        padding: 2%;
+    }
+    
+    .footer-useragreement-form{
+        grid-column: 1 / span 3;
+        grid-row-start: 2;
+        gap: 1%;
+    }
+    
+    .email{
+        grid-column: 1 / span 2;
+    }
+    
+    .submit{
+        grid-column: 3;
+    }
+    
+    /* *:required {
+        background-color: gold;
+    } */
+    
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media only screen and (min-width: 1440px) {
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20%;
+    padding: 2% 0;
+    height: auto∆;
+}
+
+.footer-checkbox-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: repeat(5,1fr); */
+    /* grid-template-rows: repeat(3,1fr); */
+    
+    /* gap:2% */
+}
+
+.footer-checkbox-items{
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* column-gap: 5%; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* flex-grow: 1; */
+    /* flex-shrink: 1; */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    /* row-gap: 10%; */
+    column-gap: 5%;
+    /* height: 10%; */
+
+}
+
+
+
+
+.footer-checkbox-items >p{
+    margin: 1% 0;
+}
+
+
+
+.footer-parent{
+    display: flex;
+    flex-direction: column;
+    gap: 3%
+}
+
+ h4{
+    margin: 2% 0;
+}
+
+.footer-email-form > h4{
+    margin:  0%;
+}
+
+.footer-form-submit{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column: 1 / span 3;
+    grid-row-start: 3;
+    height: 60%;
+}
+
+.footer-form-submit > .email    {
+    padding: 2%;
+}
+
+.footer-useragreement-form{
+    grid-column: 1 / span 3;
+    grid-row-start: 2;
+    gap: 1%;
+}
+
+.email{
+    grid-column: 1 / span 2;
+}
+
+.submit{
+    grid-column: 3;
+}
+
+/* *:required {
+    background-color: gold;
+} */
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+}
