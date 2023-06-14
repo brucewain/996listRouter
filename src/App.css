@@ -1,6 +1,4 @@
-/* font-family: 'Nunito Sans', sans-serif;
-  font-family: 'Roboto', sans-serif;   */
-
+/* Font Styles */
 h1,
 h2,
 h3,
@@ -10,32 +8,41 @@ h6 {
   font-family: "Nunito Sans", sans-serif;
 }
 
-p, a {
+p,
+a {
   font-family: "Roboto", sans-serif;
 }
 
-.h3-hover:hover{
+/* Hover Effect */
+.h3-hover:hover {
   text-decoration: underline;
-  color: #E6B85C;
+  color: #e6b85c;
 }
 
-ul{
+/* List Styles */
+ul {
   list-style-type: none;
 }
 
-
-
-.App {
-  height: 100%;
-width: 100vw;
-  margin: 0;
-  padding: 0%;
+:root{
+  background-color: #f5f5f7;
 }
 
+/* App Container */
+.App {
+  height: 100%;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f7;
+}
+
+/* Scrollbar Styles */
 .App::-webkit-scrollbar {
   display: none;
 }
 
+/* Miscellaneous Styles */
 .test2 {
   display: flex;
   align-items: flex-end;
@@ -46,18 +53,38 @@ body {
   padding: 0;
 }
 
-.spanTest{
-  background-image: url('src/assets/logo/plistlogo.png');
+.spanTest {
+  background-image: url("plistlogo.png");
   width: 100px;
   height: 100px;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background-size: cover;
+  background-repeat: no-repeat; */
 }
 
+::-webkit-scrollbar {
+  width: 0.5em; /* Adjust the width as needed */
+  background-color: transparent;
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Hide horizontal scrollbar */
+::-webkit-scrollbar-horizontal {
+  height: 0.5em; /* Adjust the height as needed */
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Media Queries */
 @media only screen and (min-width: 350px) {
-
+  /* Add specific styles for screens wider than 350px here */
 }
+
 @media only screen and (min-width: 1440px) {
-  
+  /* Add specific styles for screens wider than 1440px here */
 }

@@ -1,0 +1,70 @@
+@media only screen and (min-width: 350px) {
+  .checkoutpage {
+    padding: 20% 4%;
+  }
+
+  .checkoutpage-parent {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    justify-content: center;
+    column-gap: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding: 4%;
+    border-radius: 5px;
+  }
+
+  .checkoutpage-items {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: center;
+    column-gap: 10px;
+    flex-grow: 1;
+  }
+
+  .checkoutpage-button {
+    border-style: solid;
+    border-color: grey;
+    width: 100%;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: white;
+    padding: 4% 2%;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    background-color: rgba(159, 86, 11, 0.91);
+    color: white;
+  }
+}
+@media only screen and (min-width: 1440px) {
+
+  .checkoutpage {
+    padding: 6% 4%;
+  }
+
+
+  .checkoutpage-parent {
+    display: flex;
+    flex-direction: row;
+    row-gap: 0px;
+    justify-content: center;
+    column-gap: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding: 4%;
+    border-radius: 5px;
+  }
+
+  .StripeElement {
+    width: 100%;
+  }
+
+  .checkoutpage-button {
+    padding: 1%;
+  }
+}

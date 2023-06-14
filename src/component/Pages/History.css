@@ -18,12 +18,26 @@ img {
 
 }
 
+.app{
+  width: 100%;
+}
+
 @media screen and (min-width: 350px) {
+/* 
+  .History-banner{
+    background-image: url('https://assets-v2.porsche.com/stories/-/jssmedia/Project/Content-Hub-Tenants/Content-Hub/content-hub-main/hero/25-years-of-996-7-facts.jpg?w=1920&h=auto&rev=c8d3314630af40ababd44283c35bc423');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: right 50% top 50%;
+    width: 100%;
+    height: 700px;
+
+  } */
 
     .History-parent {
         display: grid;
         place-items: center;
-        padding: 20% 5% 5% 5%  ;
+        /* padding: 0% 5% 5% 5%  ; */
       
   }
 
@@ -39,7 +53,8 @@ img {
       display: flex;
     flex-direction: column;
     row-gap: .5em;
-    
+    justify-content: space-evenly;
+    padding: 0% 5% 5% 5% 
   }
 
   span{
@@ -53,7 +68,7 @@ img {
   }
 
   img{
-    width: 110%;
+    width: 100%;
   }
 }
 
@@ -85,7 +100,7 @@ place-items: center;
         display: flex;
         
         flex-direction: column;
-        padding:  0 15% 5% 15%;
+        padding:  0 5% 5% 5%;
       
   }
 
@@ -94,13 +109,14 @@ place-items: center;
     flex-direction: column;
     row-gap: 1.5em;
     padding-top: 5%;
+    width: 100vw;
   }
 
   .History-content{
       display: flex;
     flex-direction: column;
     row-gap: 0em;
-    
+    padding: 0%;
   }
 
   span{
@@ -119,9 +135,11 @@ place-items: center;
     
   }
 
-  img{
-    width: 120%;
+  .History-content > :not(img) {
+    padding: 0 4%;
   }
+
+
 
 
 

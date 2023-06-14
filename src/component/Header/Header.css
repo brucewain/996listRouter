@@ -1,0 +1,149 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* ICONS */
+.menu,
+.shoppingCartButton {
+  width: 50px;
+  height: 100px;
+}
+
+.logo {
+  height: 2dvh;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+/* NAVLIST */
+.navlist {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  width: 75%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  flex-direction: column;
+  background-color: white;
+}
+
+ul {
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  padding: 3% 0 3% 6%;
+}
+
+.cart-items {
+  text-align: center;
+}
+
+.chassislist-child {
+  padding: 6% 0 6% 5%;
+}
+
+.pageslist-parent {
+  border-style: solid;
+  border-width: 0.3px 0;
+  border-color: grey;
+}
+
+.pageslist-child {
+  border-style: solid;
+  border-width: 0 0 0.3px 0;
+  border-color: grey;
+  padding: 6% 0 6% 5%;
+}
+
+.sidebar-icons {
+  display: grid;
+  grid-template-columns: 16% 1fr;
+  gap: 20%;
+  align-items: center;
+  height: 75px;
+}
+
+.side-barlogo {
+  height: 1.2rem;
+  filter: invert(100%);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+a:hover,
+a:active {
+  color: #e6b85c;
+}
+
+.copy {
+  justify-self: center;
+}
+
+.shoppingCartCounter {
+  background-color: #e6b85c;
+  color: white;
+  width: 20px;
+  border-radius: 6px;
+  position: absolute;
+  top: 20px;
+  right: 5px;
+  z-index: 0;
+}
+
+.shoppingCartCounter > p {
+  margin: 0;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 350px) {
+  .navlist {
+    width: 75%;
+    height: 100vh;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .header {
+    /* display: grid;
+    grid-template-columns: 5% 1fr 5%; */
+    z-index: 2;
+  }
+
+  /* ICONS */
+  .shoppingCartButton {
+    width: 50px;
+    height: 100px;
+  }
+
+  /* NAVLIST */
+  .navlist {
+    width: 20%;
+    height: 100vh;
+    gap: 1%;
+  }
+}

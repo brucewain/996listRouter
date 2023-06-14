@@ -1,6 +1,21 @@
-import "/css/History.css";
+import { useEffect, useState } from 'react';
+import "/component/Pages/History.css";
 
 export default function History() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const history = [
     {
       title: `At the time of its release in 1997, the fifth generation of the Porsche 911 reset how the iconic sportscar looked. Today, the 996 is highly sought after.
@@ -61,31 +76,38 @@ export default function History() {
 
   return (
     <div className="History-parent">
-      {/* <h1>History</h1> */}
+      
+      {windowWidth < 351 && (
+        <img
+          src="https://cdn.elferspot.com/wp-content/uploads/2019/03/Porsche-996-4S-for-sale.jpg"
+          style={{ width: "100%" }}
+          alt=""
+        />
+      )}
 
-      {window.innerWidth >= 1440 && (
-        <div className="History-banner">
+      <div className="History-banner">
+        {windowWidth >= 1440 && (
           <div className="History-copy">
             <h3>25 years of 996: 7 facts about the iconic Porsche 911 model</h3>
             <h5>Celebrating 25 years of the first-ever water-cooled Porsche</h5>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="History-child">
-        {Object.keys(history).map((item, i) => (
+        {history.map((item, i) => (
           <div className="History-content" key={i}>
-            <span>{history[item].title}</span>
+            <span>{item.title}</span>
             <div className="history-child-copy">
               <p>
-                {history[item].text}
+                {item.text}
                 <br />
                 <br />
-                {history[item].text2}
+                {item.text2}
               </p>
             </div>
 
-            <img src={history[item].img} alt="" />
+            <img src={item.img} alt="" />
           </div>
         ))}
       </div>

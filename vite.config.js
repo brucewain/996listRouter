@@ -1,15 +1,11 @@
 import { defineConfig } from "vite";
-// import react from '@vitejs/plugin-react'
 import { resolve } from "path";
 import eslint from "vite-plugin-eslint";
 import refreshUtils from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 
-
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
-
-// https://vitejs.dev/config/
 
 export default defineConfig({
   root,
@@ -20,15 +16,11 @@ export default defineConfig({
       exportAsDefault: true,
       jsxRuntime: "automatic",
       svgrOptions: {
-        // svgr options
         jsxRuntime: "automatic",
-        prettier: 'boolean',
-       
-
+        prettier: true,
       },
     }),
   ],
-  
   build: {
     outDir,
     emptyOutDir: true,
@@ -40,6 +32,8 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    publicDir: "public",
+    
+  },
 });
-
-

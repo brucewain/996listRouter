@@ -1,9 +1,9 @@
-import "/css/FAQ.css";
+import "/component/Pages/FAQ.css";
 
 import {
   ExpansionList,
   ExpansionPanel,
-  ExpansionPanelHeader,
+  // ExpansionPanelHeader,
   usePanels,
 } from "@react-md/expansion-panel";
 import { Typography } from "@react-md/typography";
@@ -58,11 +58,11 @@ export default function FAQ() {
                 </svg>
               }
             >
-              <Typography>
+              <p>
                 It depends on the service you wish to use. All vehichles are
                 shipped on the buyer's dime. Please feel free to reach out to us
                 for reccomended partners..
-              </Typography>
+              </p>
             </ExpansionPanel>
             <ExpansionPanel
               {...panel2Props}

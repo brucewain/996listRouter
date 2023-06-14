@@ -1,0 +1,333 @@
+/* Font Families */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+p, a, .details {
+  font-family: "Roboto", sans-serif;
+}
+
+
+
+/* Responsive Styles */
+@media only screen and (min-width: 350px) {
+  /* Listing */
+  .listing {
+    padding: 0% 0% 4% 0%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  /* Cover Photo */
+  .coverPhoto {
+    width: 100%;
+  }
+
+  /* Listing Information and Contact */
+  .listingInformation {
+    padding: 0 2%;
+    display: flex;
+    flex-direction: column;
+    /* row-gap: 10px; */
+    background-color: #f5f5f7;
+  }
+
+  .titleCardParent {
+    width: 100%;
+  }
+
+  .title-details {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    /* row-gap: 6px; */
+  }
+
+  .title > h1 {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+
+  .title > * {
+    text-align: left;
+    margin: 0;
+  }
+
+  .title > h3 {
+    color: rgba(159, 86, 11, 0.91);
+  }
+
+  .details{
+    margin: 0;
+  }
+
+  .listingGalleryChild {
+    width: 100%;
+    padding: 2% 0;
+    
+  }
+
+  /* Add to Cart and Call Flexbox */
+  .price-sellerContact {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+  }
+
+  .priceLine{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+  }
+
+  .priceLine > *{
+    margin:0;
+  }
+
+  .price > * {
+    margin: 0;
+    padding: 10px 0;
+    color: rgba(159, 86, 11, 0.91);
+
+  }
+
+  /* .priceLine > p {
+  } */
+
+  .carPrice {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: rgba(159, 86, 11, 0.91);
+  }
+
+  /* Seller Details */
+  .sellerNameCity {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 1px 0;
+    border-color: rgba(159, 86, 11, 0.91);
+  }
+
+  .sellerNameCity > * {
+    margin: 0;
+    padding: 5px 0;
+  }
+
+  .sellerInfoCopy {
+    margin: 2% 0;
+    padding: 2% 0;
+    border-style: solid;
+    border-width: 1px 0;
+  }
+
+  .sellerInfoCopy > * {
+    margin: 1% 0;
+  }
+
+  /* Buttons */
+  .sellerContact > button,.addToCartButton {
+    padding: 4% 0;
+    display: flex;
+    justify-content: center;
+    column-gap: 2%;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+  }
+
+  .sellerContact {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .contactButton,
+  .callButton {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(159, 86, 11, 0.91);
+    color: rgba(159, 86, 11, 0.91);
+  }
+
+  .addToCartButton {
+    background-color: rgba(234, 18, 22, 0.91);
+    color: white;
+    width: 100%;
+    border-color: rgba(234, 18, 22, 0.91);
+  }
+
+  .buttonLogo {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Main Gallery */
+  .listingGalleryParent {
+    padding: 10% 4%;
+  }
+
+  /* Table */
+  th > h4 {
+    font-size: 1.6rem;
+    text-align: left;
+    letter-spacing: 2px;
+  }
+
+  table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2%;
+  }
+
+  tbody {
+    width: 100%;
+  }
+
+  .tableKeyEntry {
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tableKey {
+    color: grey;
+    font-weight: 100;
+  }
+
+  /* Gallery */
+  .listingGalleryParent {
+    background-color: rgba(159, 86, 11, 0.1);
+    row-gap: 10px;
+  }
+
+  .detailsAndTable {
+    padding: 0% 4%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .masonry{
+    gap:2%;
+  }
+/* 
+  .title-details > .details,
+  .details {
+    line-height: 25px;
+  } */
+}
+
+@media only screen and (min-width: 1440px) {
+  .coverPhoto {
+    width: 65%;
+  }
+
+  .titleCardParent {
+    display: flex;
+    place-content: center;
+    place-items: center;
+  }
+
+  /* Listing Information DIV */
+  .listing {
+    row-gap: 0px;
+  }
+
+  .listingInformation {
+    display: grid;
+    grid-template-columns: 65% auto;
+    column-gap: 50px;
+    row-gap: 0px;
+  }
+
+  .title-details > .details {
+    font-size: 1rem;
+    line-height: 30px;
+    text-align: justify;
+  }
+
+
+
+  /* Title Model */
+  .title-details {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    row-gap: 0px;
+    justify-content: space-between;
+  }
+
+  .title > h1 {
+    font-size: 2rem;
+  }
+
+  .details {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 3;
+    line-height: 20px;
+    font-size: .8rem;
+  }
+
+  .price-sellerContact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    grid-column: 2;
+    grid-row: 1 / -1;
+    row-gap: 10px;
+  }
+
+  .sellerContact {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: center;
+    row-gap: 10px;
+    width: 100%;
+  }
+
+  .sellerNameCity {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    justify-content: space-between;
+  }
+
+  .sellerNameCity > * {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  .listingInformation,
+  .listingGalleryParent,
+  .detailsAndTable,
+  table {
+    padding: 2% 20%;
+  }
+
+  .detailsAndTable {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    padding: 4%;
+  }
+}

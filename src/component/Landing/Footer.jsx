@@ -1,4 +1,4 @@
-import "/css/Footer.css";
+import "/component/Landing/Footer.css";
 
 const shop = (props) => {
   return (
@@ -15,13 +15,17 @@ const shop = (props) => {
 
 const nineelevenlist = (props) => {
   return (
-    <div className="footer-parent">
+    
+    <div>
       <h4>996LIST</h4>
+      <div className="footer-parent">
       {props.pages && props.pages.map((site, i) => (
         <a href={site.url} className="footer-child" key={i}>
           {site.title}
         </a>
       ))}
+    
+      </div>
     </div>
   );
 };
@@ -67,8 +71,8 @@ const emaillist = () => {
 export default function Footer(props) {
   return (
     <nav className="footer">
-      {shop(props)}
-      {nineelevenlist(props)}
+      {/* {shop(props)} */}
+      {/* {nineelevenlist(props)} */}
       {emaillist()}
     </nav>
   );
