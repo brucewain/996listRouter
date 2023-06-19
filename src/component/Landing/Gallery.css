@@ -1,15 +1,15 @@
 
 
 @media only screen and (min-width: 350px) {
-
+  
   .gallery-array-pagename{
     margin: 0;
-    font-size: 3em;
+    font-size: 2em;
   }
   .gallery-array-title > a{
-    font-size: 1.2em;
+    font-size: 1em;
     /* font-style: italic; */
-    letter-spacing: 7px;
+    letter-spacing: 5px;
   }
   .gallery-array-title > * {
     color: white;
@@ -38,6 +38,7 @@
   .test2 {
     display: flex;
     align-items: flex-end;
+    
   }
 
   .gallery-array-title {

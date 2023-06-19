@@ -1,7 +1,7 @@
 import "/component/Landing/Gallery.css";
 // const imgUrl = new URL('/Morning Car Club_210.jpg', import.meta.url).href
 
-export default function Gallery() {
+export default function MobileGallery() {
   const galleryarray = [
     {
       page: "Featured",
@@ -35,17 +35,11 @@ export default function Gallery() {
       copyurl: "/FAQ",
     },
   ];
-  const innerWidth = window.innerWidth;
 
+  
 
-  const DesktopGallery = () => {
-    
-  }
-
-  function MobileGallery(){
-
-    return (
-      <div className="gallery">
+  return (
+    <div className="gallery">
       {Object.keys(galleryarray).map((key, i) => (
         <div
           className="test2"
@@ -53,9 +47,8 @@ export default function Gallery() {
           style={{
             backgroundImage: `url("${galleryarray[key].image}")`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            height: "500px",
+            height: "420px",
           }}
         >
           <div className="gallery-array-title">
@@ -65,34 +58,5 @@ export default function Gallery() {
         </div>
       ))}
     </div>
-    )
-  }
-
-  return (
-    <div>
-    {innerWidth >= 1440 ? (
-      <div className="gallery">
-        {Object.keys(galleryarray).map((key, i) => (
-          <div
-            className="test2"
-            key={i}
-            style={{
-              backgroundImage: `url("${galleryarray[key].image}")`,
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              height: "900px",
-            }}
-          >
-            <div className="gallery-array-title">
-              <h2 className="gallery-array-pagename">{galleryarray[key].page}</h2>
-              <a href={galleryarray[key].copyurl}>{galleryarray[key].copy}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-    ) : (
-      <MobileGallery />
-    )}
-  </div>
   );
 }
