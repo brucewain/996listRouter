@@ -1,7 +1,7 @@
 [
   {
     "model": "996.1",
-    "chassisCode": "9961",
+    "chassisCode": "Carrera",
     "year": 1999,
     "trim": "Carrera 2",
     "body": "Coupé",
@@ -27,7 +27,7 @@
   },
   {
     "model": "996.2",
-    "chassisCode": "9962",
+    "chassisCode": "Carrera",
     "year": 2002,
     "coverphoto": "https://cdn.elferspot.com/wp-content/uploads/2022/11/23/Cote-1-1800x1198.png",
     "price": 10000,
@@ -53,7 +53,7 @@
   },
   {
     "model": "996.2",
-    "chassisCode": "9962",
+    "chassisCode": "Carrera",
     "year": 2003,
     "coverphoto": "https://cdn.elferspot.com/wp-content/uploads/2022/11/23/Cote-1-1800x1198.png",
     "price": 10000,
@@ -78,7 +78,7 @@
   },
   {
     "model": "996.2",
-    "chassisCode": "9962",
+    "chassisCode": "Carrera",
     "year": 2003,
     "coverphoto": "https://cdn.elferspot.com/wp-content/uploads/2022/11/23/Cote-1-1800x1198.png",
     "price": 10000,
@@ -103,7 +103,7 @@
   },
   {
     "model": "996.1",
-    "chassisCode": "9961",
+    "chassisCode": "Carrera",
     "year": 1999,
     "coverphoto": "https://cdn.elferspot.com/wp-content/uploads/2022/11/23/Cote-1-1800x1198.png",
     "price": 10000,
@@ -129,7 +129,7 @@
   },
   {
     "model": "996.1",
-    "chassisCode": "9961",
+    "chassisCode": "Carrera",
     "year": 1999,
     "coverphoto": "https://cdn.elferspot.com/wp-content/uploads/2022/11/23/Cote-1-1800x1198.png",
     "price": 10000,
@@ -155,7 +155,7 @@
   },
   {
     "model": "996.1",
-    "chassisCode": "9961",
+    "chassisCode": "Carrera",
     "year": 1999,
     "coverphoto": "https://cdn.elferspot.com/wp-content/uploads/2022/11/23/Cote-1-1800x1198.png",
     "price": 10000,

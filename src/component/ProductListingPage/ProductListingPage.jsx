@@ -40,7 +40,7 @@ export default function ProductListingPage(props) {
           style={{ backgroundImage: `url(${item.coverphoto})` }}
         >
           <p>
-            {item.year} Porsche {item.model}
+            {item.year} Porsche 911 {item.trim}
           </p>
         </div>
       </Link>

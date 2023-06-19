@@ -15,6 +15,7 @@ import Register from "./component/Pages/Register";
 import inventory from "./assets/inventory.json";
 import ProductDetailPage from "./component/ProductDetailPage/ProductDetailPage";
 import ProductListingPage from "/component/ProductListingPage/ProductListingPage.jsx";
+import PaymentCompletion from "/component/ProductDetailPage/PaymentCompletion.jsx";
 import Inventory from "/assets/inventory.json";
 //Stripe
 
@@ -24,8 +25,7 @@ import CheckoutForm from "./component/Checkoutform/CheckoutForm";
 
 function App() {
   const chassis = [
-    { model: "996.1", id: "9961" },
-    { model: "996.2", id: "9962" },
+    { model: "Carrera", id: "Carrera" },
     { model: "4S", id: "C4S" },
     { model: "Turbo", id: "Turbo" },
     { model: "GT3", id: "GT3" },
@@ -47,7 +47,7 @@ function App() {
   const [selectedListingId, setselectedListingId] = useState(null);
   const [cookies, setCookie] = useCookies(["cartItems"]); // initializing state cookies
   const [cartItem, setCartItem] = useState(cookies.cartItems || []);
-  const [cartPrice, setCartPrice] = useState(0);
+  const [cartPrice, setCartPrice] = useState(null);
 
   const handleListingState = (state) => {
     setSharedState(state);
@@ -78,22 +78,25 @@ function App() {
   //   localStorage.setItem("state", JSON.stringify(state));
   // }, [state]);
 
-  useEffect(() => {
-    const listingPrices = cartItem.map((listingId) => {
-      const listing = Inventory.find(
-        (listing) => listing.listingId === listingId
-      );
-      return listing ? listing.price : null;
-    });
+  useEffect(
+    () => {
+      const listingPrices = cartItem.map((listingId) => {
+        const listing = Inventory.find(
+          (listing) => listing.listingId === listingId
+        );
+        return listing ? listing.price : null;
+      });
 
-    setCartPrice(
-      listingPrices.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      )
-    );
-    console.log(cartPrice);
-  }, [cartItem], [removeItem]); // Include cartItem and removeItem as dependencies
+      setCartPrice(
+        listingPrices.reduce(
+          (accumulator, currentValue) => accumulator + currentValue,
+          0
+        )
+      );
+    },
+    [cartItem],
+    [removeItem]
+  ); // Include cartItem and removeItem as dependencies
 
   const addToCart = () => {
     if (!selectedListingId) {
@@ -181,15 +184,67 @@ function App() {
   const stripePromise = loadStripe(
     "pk_test_51NEwFNDR8aBIUyKTl8gRMCo9EdoA4oVLsCqDrLhlezmExZh0ZlGVjldFIRP59MYtdURhWJStQ5WwmYIg16RGOpOC00o9NRkBPP"
   );
+  
+  const [clientSecret, setClientSecret] = useState("");
+
+  useEffect(() => {
+    // Create PaymentIntent as soon as the page loads
+    fetch("/create-payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: cartItem
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, []);
+
+  const appearance = {
+      theme: "flat",
+      variables: {
+        fontFamily: ' "Gill Sans", sans-serif',
+        fontLineHeight: "1.5",
+        borderRadius: "10px",
+        colorBackground: "#F6F8FA",
+        colorPrimaryText: "#262626",
+      },
+      rules: {
+        ".Block": {
+          backgroundColor: "var(--colorBackground)",
+          boxShadow: "none",
+          padding: "12px",
+        },
+        ".Input": {
+          padding: "12px",
+        },
+        ".Input:disabled, .Input--invalid:disabled": {
+          color: "lightgray",
+        },
+        ".Tab": {
+          padding: "10px 12px 8px 12px",
+          border: "none",
+        },
+        ".Tab:hover": {
+          border: "none",
+          boxShadow:
+            "0px 1px 1px rgba(0, 0, 0, 0.03), 0px 3px 7px rgba(18, 42, 66, 0.04)",
+        },
+        ".Tab--selected, .Tab--selected:focus, .Tab--selected:hover": {
+          border: "none",
+          backgroundColor: "#fff",
+          boxShadow:
+            "0 0 0 1.5px var(--colorPrimaryText), 0px 1px 1px rgba(0, 0, 0, 0.03), 0px 3px 7px rgba(18, 42, 66, 0.04)",
+        },
+        ".Label": {
+          fontWeight: "500",
+        },
+      },
+  };
 
   const options = {
     mode: "payment",
-    amount: { cartPrice },
+    amount: cartPrice,
     currency: "usd",
-    // Fully customizable with appearance API.
-    appearance: {
-      /*...*/
-    },
+    appearance,
   };
 
   return (
@@ -242,6 +297,7 @@ function App() {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
+            <Route path="/PaymentCompletion" element={<PaymentCompletion />} />
 
             <Route
               path="/CheckoutForm"
@@ -249,6 +305,7 @@ function App() {
                 <Elements
                   stripe={stripePromise}
                   options={options}
+                  clientSecret={clientSecret}
                   updateCart={updateCart}
                 >
                   <CheckoutForm
@@ -256,6 +313,7 @@ function App() {
                     options={options}
                     updateCart={updateCart}
                     cartPrice={cartPrice}
+                    clientSecret={clientSecret}
                   />
                 </Elements>
               }

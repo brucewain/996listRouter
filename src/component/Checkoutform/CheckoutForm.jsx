@@ -1,53 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Checkout.css";
-import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import {
+  useStripe,
+  useElements,
+  PaymentElement,
+} from "@stripe/react-stripe-js";
 
-const CheckoutForm = ({ updateCart, cartItem, cartPrice, cartTotal, options }) => {
+const CheckoutForm = ({ updateCart, cartItem, cartPrice, clientSecret }) => {
   const stripe = useStripe();
   const elements = useElements();
+  const [message, setMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!elements) {
+  useEffect(() => {
+    if (!stripe) {
       return;
     }
 
-    try {
-      const { error: submitError } = await elements.getElement("payment").confirm();
-
-      if (submitError) {
-        setErrorMessage(submitError.message);
-        return;
-      }
-
-      const res = await fetch("/create-intent", {
-        method: "POST",
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to create PaymentIntent");
-      }
-
-      const { client_secret: clientSecret } = await res.json();
-
-      const { error } = await stripe.confirmPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement("card"),
-        },
-        return_url: "https://example.com/order/123/complete",
-      });
-
-      if (error) {
-        setErrorMessage(error.message);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      setErrorMessage("An error occurred. Please try again.");
+    if (!clientSecret) {
+      return;
     }
+
+    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+      switch (paymentIntent.status) {
+        case "succeeded":
+          setMessage("Payment succeeded!");
+          break;
+        case "processing":
+          setMessage("Your payment is processing.");
+          break;
+        case "requires_payment_method":
+          setMessage("Your payment was not successful, please try again.");
+          break;
+        default:
+          setMessage("Something went wrong.");
+          break;
+      }
+    });
+  }, [stripe]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Submit button clicked");
+    
+    if (!stripe || !elements || !clientSecret) {
+      return;
+    }
+  
+    setIsLoading(true);
+  
+    const { error } = await stripe.confirmPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(PaymentElement),
+        // Add any additional payment method data if required
+      },
+      confirmParams: {
+        // Make sure to change this to your payment completion page
+        return_url: "http://localhost:5173/PaymentCompletion",
+      },
+    });
+  
+    if (error) {
+      setMessage(error.message);
+    } else {
+      setMessage("Payment succeeded!");
+    }
+  
+    setIsLoading(false);
   };
+  
 
   return (
     <div className="checkoutpage">
@@ -55,25 +76,22 @@ const CheckoutForm = ({ updateCart, cartItem, cartPrice, cartTotal, options }) =
         {updateCart(cartItem)}
 
         <form onSubmit={handleSubmit} className="checkoutpage-items">
-          <div id="payment-element">
-            <div style={{ marginBottom: "1rem" }}>
-              <label htmlFor="card-element">Card Details</label>
-              <div id="card-element">
-                <CardElement />
-              </div>
-            </div>
-          </div>
-
+          <PaymentElement id="payment-element" />
           <button
-            type="submit"
+            disabled={isLoading || !stripe || !elements}
+            id="submit"
             className="checkoutpage-button"
-            disabled={!stripe || !elements}
           >
-            <p>Pay</p>
-            <p>{"$" + cartPrice}</p>
+            <span id="button-text">
+              {isLoading ? (
+                <div className="spinner" id="spinner"></div>
+              ) : (
+                <p> Pay {"$" + cartPrice}</p>
+              )}
+            </span>
           </button>
-
-          {errorMessage && <div>{errorMessage}</div>}
+          {/* Show any error or success messages */}
+          {message && <div id="payment-message">{message}</div>}
         </form>
       </div>
     </div>

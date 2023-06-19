@@ -52,9 +52,9 @@
   .buttonTest {
     margin: 3%;
     padding: 3% 0;
-    background-color: rgba(234, 18, 22, 0.91);
+
     color: white;
-    border-color: rgba(234, 18, 22, 0.91);
+
     column-gap: 2%;
     letter-spacing: 1px;
     word-spacing: 1px;
@@ -72,7 +72,7 @@
     /* align-self: flex-start; */
   }
 
-  .cart-item-copy{
+  .cart-item-copy {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -85,10 +85,9 @@
     height: 150px;
   }
 
-  .cart-item-trash{
+  .cart-item-trash {
     height: 20px;
     width: 20px;
-
   }
 
   .cart-item-copy > p {
@@ -134,8 +133,6 @@
     word-spacing: 1px;
     height: 10%;
   } */
-
-
 
   .buttonTest {
     margin: 3%;

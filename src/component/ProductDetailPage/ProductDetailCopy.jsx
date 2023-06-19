@@ -21,7 +21,7 @@ export default function ProductDetailCopy(props) {
         <div className="title-details">
           <div className="title">
             <h1>
-              Porsche {loadContent.model} {loadContent.trim}
+               Porsche 911 {/*{loadContent.model} */}{loadContent.trim} 
             </h1>
             <h3>
               {loadContent.body}, {loadContent.year}
