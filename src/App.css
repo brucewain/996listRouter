@@ -83,6 +83,14 @@ body {
 /* Media Queries */
 @media only screen and (min-width: 350px) {
   /* Add specific styles for screens wider than 350px here */
+
+.cart-item-copy{
+  display: flex;
+  justify-content: space-between;
+}
+  .cart-item-trash{
+    width: 20px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {

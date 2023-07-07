@@ -22,7 +22,7 @@ export default function ProductDetailPage(props) {
   }, [listingId, location, setselectedListingId]);
 
   // console.log(listingId);
-  console.log(loadContent);
+  // console.log(loadContent);
 
   if (!loadContent) {
     // Handle case when item is not found

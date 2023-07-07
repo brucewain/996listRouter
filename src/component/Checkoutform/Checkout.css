@@ -1,3 +1,17 @@
+
+.FormGroup{
+  padding: 5%;
+  width: 500px;
+  height: 600px;
+}
+
+.FormRow{
+  color: black;
+}
+
+
+
+
 @media only screen and (min-width: 350px) {
   .checkoutpage {
     padding: 20% 4%;

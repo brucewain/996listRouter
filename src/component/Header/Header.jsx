@@ -13,7 +13,7 @@ const Header = (props) => {
       <HeaderSideBarLinks chassis={props.chassis} pages={props.pages} setSelectModel={setSelectModel}/>
       <Link to="/">
         <img
-          src="/logo/plistlogo.png"
+          src="/images/plistlogo.png"
           alt=""
           className="spanTest"
           id="side-barlogo"

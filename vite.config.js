@@ -3,6 +3,9 @@ import { resolve } from "path";
 import eslint from "vite-plugin-eslint";
 import refreshUtils from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
+import reactRefresh from '@vitejs/plugin-react-refresh';
+import react from '@vitejs/plugin-react';
+
 
 const root = resolve(__dirname, "src");
 const outDir = resolve(__dirname, "dist");
@@ -10,6 +13,8 @@ const outDir = resolve(__dirname, "dist");
 export default defineConfig({
   root,
   plugins: [
+    // reactRefresh(),
+    // react(),
     refreshUtils(),
     eslint(),
     svgr({

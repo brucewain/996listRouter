@@ -10,7 +10,12 @@
     top: 0;
     width: 90%;
     height: 100vh;
-    z-index: 3;
+    z-index: -1;
+  }
+
+  .cartSVG{
+    position: inherit;
+    z-index: 4;
   }
 
   .shoppingCart {

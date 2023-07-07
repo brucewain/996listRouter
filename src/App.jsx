@@ -16,12 +16,20 @@ import inventory from "./assets/inventory.json";
 import ProductDetailPage from "./component/ProductDetailPage/ProductDetailPage";
 import ProductListingPage from "/component/ProductListingPage/ProductListingPage.jsx";
 import PaymentCompletion from "/component/ProductDetailPage/PaymentCompletion.jsx";
+import PaymentFailed from "/component/Checkoutform/PaymentForm.jsx";
 import Inventory from "/assets/inventory.json";
+import PaymentForm from "./component/Checkoutform/PaymentForm";
 //Stripe
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "./component/Checkoutform/CheckoutForm";
+import CheckoutForm from "/component/Checkoutform/CheckoutForm.jsx";
+import PaymentElement from "./component/Checkoutform/PaymentElement";
+
+
+const stripePromise = loadStripe(
+  "pk_test_51NEwFNDR8aBIUyKTl8gRMCo9EdoA4oVLsCqDrLhlezmExZh0ZlGVjldFIRP59MYtdURhWJStQ5WwmYIg16RGOpOC00o9NRkBPP"
+);
 
 function App() {
   const chassis = [
@@ -47,7 +55,7 @@ function App() {
   const [selectedListingId, setselectedListingId] = useState(null);
   const [cookies, setCookie] = useCookies(["cartItems"]); // initializing state cookies
   const [cartItem, setCartItem] = useState(cookies.cartItems || []);
-  const [cartPrice, setCartPrice] = useState(null);
+  const [cartPrice, setCartPrice] = useState(1);
 
   const handleListingState = (state) => {
     setSharedState(state);
@@ -143,12 +151,12 @@ function App() {
                   onClick={() => removeItem(i)}
                   className="cart-item-trash"
                   xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
                   x="0px"
                   y="0px"
                   viewBox="0 0 25 24.8"
                   // style={{"enable-background:new 0 0 25 24.8"}}
-                  xml:space="preserve"
+                  xmlpace="preserve"
                   data-ember-action=""
                   data-ember-action-1015="1015"
                 >
@@ -167,12 +175,18 @@ function App() {
                   </g>
                 </svg>
               </div>
+              <form action="/create-checkout-session" method="POST">
+      <button type="submit">
+        Checkout
+      </button>
+    </form>
             </div>
           ))
         )}
       </div>
     );
   }
+
 
   function removeItem(i) {
     const updatedCartItems = [...cartItem];
@@ -181,22 +195,9 @@ function App() {
     setCookie("cartItems", updatedCartItems, { path: "/" });
   }
 
-  const stripePromise = loadStripe(
-    "pk_test_51NEwFNDR8aBIUyKTl8gRMCo9EdoA4oVLsCqDrLhlezmExZh0ZlGVjldFIRP59MYtdURhWJStQ5WwmYIg16RGOpOC00o9NRkBPP"
-  );
-  
   const [clientSecret, setClientSecret] = useState("");
 
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    fetch("/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: cartItem
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, []);
+
 
   const appearance = {
       theme: "flat",
@@ -298,6 +299,8 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/PaymentCompletion" element={<PaymentCompletion />} />
+            <Route path="/PaymentFailed" element={<PaymentFailed />} />
+            
 
             <Route
               path="/CheckoutForm"
@@ -308,13 +311,21 @@ function App() {
                   clientSecret={clientSecret}
                   updateCart={updateCart}
                 >
-                  <CheckoutForm
+                  {/* <CheckoutForm
                     stripe={stripePromise}
                     options={options}
                     updateCart={updateCart}
                     cartPrice={cartPrice}
                     clientSecret={clientSecret}
-                  />
+                  /> */}
+                  <PaymentForm       
+                  // stripe={stripePromise}
+                  //   options={options}
+                    updateCart={updateCart}
+                    cartPrice={cartPrice}
+                    // clientSecret={clientSecret}
+                    />
+
                 </Elements>
               }
             />
