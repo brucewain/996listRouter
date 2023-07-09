@@ -38,15 +38,16 @@ export default function CheckoutForm({ updateCart, cartItem, cartPrice, clientSe
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
-      {/* <PaymentElement id="payment-element" /> */}
-      <button disabled={isProcessing || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isProcessing ? "Processing ... " : "Pay now"}
-        </span>
-      </button>
-      {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
-    </form>
+    // <form id="payment-form" onSubmit={handleSubmit}>
+    //   {/* <PaymentElement id="payment-element" /> */}
+    //   <button disabled={isProcessing || !stripe || !elements} id="submit">
+    //     <span id="button-text">
+    //       {isProcessing ? "Processing ... " : "Pay now"}
+    //     </span>
+    //   </button>
+    //   {/* Show any error or success messages */}
+    //   {message && <div id="payment-message">{message}</div>}
+    // </form>
+    <div>test</div> 
   );
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "-": "^0.0.1",
@@ -29,7 +30,7 @@
     "react-refresh": "^0.14.0",
     "react-responsive-masonry": "^2.1.7",
     "react-router-dom": "^6.13.0",
-    "stripe": "^12.11.0",
+    "stripe": "^12.12.0",
     "vite-plugin-svgr": "^3.2.0",
     "vite-react-jsx": "^1.1.2"
   },

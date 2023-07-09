@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { CookiesProvider } from "react-cookie";
 import Header from "./component/Header/Header";
@@ -25,6 +25,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "/component/Checkoutform/CheckoutForm.jsx";
 import PaymentElement from "./component/Checkoutform/PaymentElement";
+
 
 
 const stripePromise = loadStripe(
@@ -125,76 +126,6 @@ function App() {
     console.log(cartPrice);
   };
 
-  function updateCart() {
-    const displayCartItems = cartItem.map((listingId) => {
-      const item = inventory.find((item) => item.listingId === listingId);
-
-      if (item) {
-        const { year, model, trim, price, mileage, coverphoto } = item;
-        return { year, model, trim, price, mileage, coverphoto };
-      }
-      return null;
-    });
-
-    return (
-      <div className="cart-item-parent">
-        {displayCartItems.length < 1 ? (
-          <div className="no-cart-items">No items in the cart.</div>
-        ) : (
-          displayCartItems.map((item, i) => (
-            <div className="cart-item-child" key={i}>
-              <img src={item.coverphoto} alt="" className="cart-item-image" />
-              <div className="cart-item-copy">
-                <p>{`${item.year} 911 Porsche ${item.trim}`}</p>
-
-                <svg
-                  onClick={() => removeItem(i)}
-                  className="cart-item-trash"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  x="0px"
-                  y="0px"
-                  viewBox="0 0 25 24.8"
-                  // style={{"enable-background:new 0 0 25 24.8"}}
-                  xmlpace="preserve"
-                  data-ember-action=""
-                  data-ember-action-1015="1015"
-                >
-                  <g className="trashcan-open">
-                    <path d="M18.7,24.4H5.9L4.9,7h14.9L18.7,24.4z M7.6,22.6H17l0.8-13.7h-11L7.6,22.6z"></path>
-                    <polygon points="13.6,10.3 13.1,21.2 14.9,21.2 15.4,10.3 "></polygon>
-                    <polygon points="11.5,21.2 11,10.3 9.2,10.3 9.7,21.2 "></polygon>
-                    <path
-                      d="M19.1,0.7l-4.7,0.9l-0.8-1.4L8.2,1.3L8,3l-4.7,1l0.2,4.7l17.3-3.5L19.1,0.7z 
-             
-             M8.8,1.9l4.4 -1.0 l0.5,0.8
-             L8.7,2.8z 
-             
-             M5.2,6.4l0-1L18,2.8l0.3,0.9L5.2,6.4z"
-                    ></path>
-                  </g>
-                </svg>
-              </div>
-              <form action="/create-checkout-session" method="POST">
-      <button type="submit">
-        Checkout
-      </button>
-    </form>
-            </div>
-          ))
-        )}
-      </div>
-    );
-  }
-
-
-  function removeItem(i) {
-    const updatedCartItems = [...cartItem];
-    updatedCartItems.splice(i, 1);
-    setCartItem(updatedCartItems);
-    setCookie("cartItems", updatedCartItems, { path: "/" });
-  }
-
   const [clientSecret, setClientSecret] = useState("");
 
 
@@ -246,7 +177,81 @@ function App() {
     amount: cartPrice,
     currency: "usd",
     appearance,
+    clientSecret: '{{CLIENT_SECRET}}',
   };
+
+
+  function updateCart() {
+    const displayCartItems = cartItem.map((listingId) => {
+      const item = inventory.find((item) => item.listingId === listingId);
+
+      if (item) {
+        const { year, model, trim, price, mileage, coverphoto } = item;
+        return { year, model, trim, price, mileage, coverphoto };
+      }
+      return null;
+    });
+
+    return (
+      <div className="cart-item-parent">
+        {displayCartItems.length < 1 ? (
+          <div className="no-cart-items">No items in the cart.</div>
+        ) : (
+          displayCartItems.map((item, i) => (
+            <div className="cart-item-child" key={i}>
+              <img src={item.coverphoto} alt="" className="cart-item-image" />
+              <div className="cart-item-copy">
+                <p>{`${item.year} 911 Porsche ${item.trim}`}</p>
+
+                <svg
+                  onClick={() => removeItem(i)}
+                  className="cart-item-trash"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 25 24.8"
+                  // style={{"enable-background:new 0 0 25 24.8"}}
+                  xmlpace="preserve"
+                  data-ember-action=""
+                  data-ember-action-1015="1015"
+                >
+                  <g className="trashcan-open">
+                    <path d="M18.7,24.4H5.9L4.9,7h14.9L18.7,24.4z M7.6,22.6H17l0.8-13.7h-11L7.6,22.6z"></path>
+                    <polygon points="13.6,10.3 13.1,21.2 14.9,21.2 15.4,10.3 "></polygon>
+                    <polygon points="11.5,21.2 11,10.3 9.2,10.3 9.7,21.2 "></polygon>
+                    <path
+                      d="M19.1,0.7l-4.7,0.9l-0.8-1.4L8.2,1.3L8,3l-4.7,1l0.2,4.7l17.3-3.5L19.1,0.7z 
+             
+             M8.8,1.9l4.4 -1.0 l0.5,0.8
+             L8.7,2.8z 
+             
+             M5.2,6.4l0-1L18,2.8l0.3,0.9L5.2,6.4z"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+              <form action="/CheckoutForm" method="POST">
+      {/* <button type="submit"> */}
+      <Link to="/CheckoutForm" relative="path">sdfasdf</Link>
+     
+      {/* </button> */}
+    </form>
+            </div>
+          ))
+        )}
+      </div>
+    );
+  }
+
+
+  function removeItem(i) {
+    const updatedCartItems = [...cartItem];
+    updatedCartItems.splice(i, 1);
+    setCartItem(updatedCartItems);
+    setCookie("cartItems", updatedCartItems, { path: "/" });
+  }
+
 
   return (
     <Router>
@@ -311,20 +316,20 @@ function App() {
                   clientSecret={clientSecret}
                   updateCart={updateCart}
                 >
-                  {/* <CheckoutForm
+                  <CheckoutForm
                     stripe={stripePromise}
                     options={options}
                     updateCart={updateCart}
                     cartPrice={cartPrice}
                     clientSecret={clientSecret}
-                  /> */}
-                  <PaymentForm       
-                  // stripe={stripePromise}
-                  //   options={options}
+                  />
+                  {/* <PaymentForm       
+                  stripe={stripePromise}
+                    options={options}
                     updateCart={updateCart}
                     cartPrice={cartPrice}
-                    // clientSecret={clientSecret}
-                    />
+                    clientSecret={clientSecret}
+                    /> */}
 
                 </Elements>
               }
