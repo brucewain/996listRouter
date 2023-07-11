@@ -5,7 +5,7 @@ import HeaderSideBarLinks from "./HeaderSideBarLinks";
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  const { addToCart, cartItem, selectedListingId, updateCart,
+  const { addToCart, cartItem, selectedListingId, updateCart, removeItem, clientSecret, options, stripePromise,
   setSelectModel } = props;
 
   return (
@@ -26,6 +26,11 @@ const Header = (props) => {
         cartItem={cartItem}
         selectedListingId={selectedListingId}
         updateCart={updateCart}
+        //new
+        removeItem={removeItem}
+clientSecret={clientSecret}
+options={options}
+stripe={stripePromise}
       />
     </div>
   );
@@ -38,3 +43,4 @@ Header.propTypes = {
 };
 
 export default Header;
+

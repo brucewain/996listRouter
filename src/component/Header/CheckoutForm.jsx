@@ -1,17 +1,16 @@
-
-import { useState, useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
 import {
   PaymentElement,
+  LinkAuthenticationElement,
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-// { updateCart, cartItem, cartPrice }
+
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  
+  // const [email, setEmail] = useState('');
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -85,6 +84,10 @@ export default function CheckoutForm() {
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
+      <LinkAuthenticationElement
+        id="link-authentication-element"
+        onChange={(e) => setEmail(e.target.value)}
+      />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <button disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
@@ -93,7 +96,6 @@ export default function CheckoutForm() {
       </button>
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
-
     </form>
   );
 }
